@@ -9,17 +9,50 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var favColorLabel: UILabel!
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        if ((UserDefaults.standard.value(forKey: "color") as? String) != nil) {
+            favColorLabel.text = "Favorite Color: \(color)"
+        } else {
+            favColorLabel.text = "Pick either Red, Green or Blue!"
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    @IBAction func redBtn(_ sender: AnyObject) {
+        
+        favColorLabel.text = "Favorite Color: Red"
+        UserDefaults.standard.setValue("Red", forKey: "color")
+        UserDefaults.standard.synchronize()
+        
+    }
+    
+    @IBAction func greenBtn(_ sender: AnyObject) {
+        
+        favColorLabel.text = "Favorite Color: Green"
+        UserDefaults.standard.setValue("Green", forKey: "color")
+        UserDefaults.standard.synchronize()
+        
+    }
+    
+    @IBAction func blueBtn(_ sender: AnyObject) {
+        
+        favColorLabel.text = "Favorite Color: Blue"
+        UserDefaults.standard.setValue("Blue", forKey: "color")
+        UserDefaults.standard.synchronize()
+        
+    }
+    
 }
 
