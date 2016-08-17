@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if ((UserDefaults.standard.value(forKey: "color") as? String) != nil) {
+        if let color = UserDefaults.standard.value(forKey: "color") as? String {
             favColorLabel.text = "Favorite Color: \(color)"
         } else {
             favColorLabel.text = "Pick either Red, Green or Blue!"
@@ -27,7 +27,6 @@ class ViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func redBtn(_ sender: AnyObject) {
